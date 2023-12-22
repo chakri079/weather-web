@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    background-color:black;
+}
+
+.card{
+    width: 90%;
+    max-width: 470px;
+   padding: 40px 35px;
+   background: linear-gradient(100deg,#72fe00,#54548a);
+    margin: 50px auto 0;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    text-align: center;
+   
+}
+.search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search input{
+    border: 0;
+    background: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    height: 40px;
+    margin-right: 16px;
+    flex: 1;
+}
+#searchBtn{
+    outline: 0;
+    border: 0;
+    border-radius: 20%;
+   cursor: pointer;
+}
+.weather-icon{
+    border-radius:25%;
+}
+.cloud img{
+    width: 200px;
+    padding-top: 30px;
+}
+.cloud{
+    padding: auto;
+    font-size: 30px;
+}
+.cityName {
+    font-size: 50px;
+}
+.temp{
+    font-size: 40px;
+    padding: 10px;
+}
+.cityName{
+    font-size: large;
+}
+.wind img{
+    width: 120px;
+    padding-top:0px;
+}
+.humid img{
+    width: 90px;
+    padding-top: 15px ;
+    margin-left: 0px;
+}
+.humid{
+    margin-right: 40px;
+}
+.wind{
+    
+    margin-left: 90px;
+}
+.cloudData{
+    display: flex;
+    padding: 10px;
+}
+
+@media (max-width: 576px) {
+    /* Add specific styles for small screens */
+    .cloud img {
+        width: 150px;
+        max-width: 250px;
+        min-width: 100px;
+
+    }
+
+    /* Adjust other styles as needed */
+}

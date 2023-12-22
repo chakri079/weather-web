@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wheatherWeb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+   <link rel="stylesheet" href="wheather.css">
+</head>
+<body>
+    <h1 class="  text-center text-secondary display-1 bg-info rounded-circle">WheaterReport</h1>
+
+    <div class="card mx-auto text-center">
+        <div class="search">
+            <input type="text" id="city" placeholder="Enter City Name" class="" spellcheck="false">
+            <button class="btn btn-primary ">Search</button>
+        </div>
+        <div class="cloud">
+            <img src="./photos/sun photo.png " class="" >
+            <div class="temp">55*C</div>
+            <div class="cityName"><h1>HYDERABAD</h1></div>
+        </div>
+       
+        <div class="cloudData">
+            
+             <div class="humid">
+                <img src="https://www.beaconmedaes.com/content/dam/brands/beacon-medaes/images/nfpa-products/pipeline/monitoring/total-alert-infinity/humidity_icon.png" alt="">
+                <h4 class="humidrange">64%</h4>
+                <p><b>HUMIDITY</b></p>
+             </div>
+             <div class="wind">
+                <img src="https://clipground.com/images/wind-logo-png-9.png" class="">
+                <h4 class="windspeed ">5 km/hr</h4>
+                <p class=""><b>SPEED</b></p>
+           </div>
+        </div>
+
+<script>
+    let apikey="56ef4bcfa30e882495e1947567b07f10";
+    let apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric &q=hyderabad";
+    
+    let searchbox=document.querySelector(".search input");
+    let searchBtn=document.querySelector(".btn");
+    
+    async function checkWheather(cityName) {
+       // let city=document.getElementById("city").value;
+       // let apiUrl=`https://api.openweathermap.org/data/2.5/weather?units=metric &q=${city}`;
+        let response=await fetch(apiUrl + cityName + `&appid=${apikey}`);
+        let data=await response.json();
+        console.log(data);
+
+         let cityName1=document.querySelector(".cityName");
+         cityName1.innerHTML=data.name;
+
+         let temp=document.querySelector(".temp"); 
+        temp.innerHTML=Math.round(data.main.temp-273)+ "°C";
+
+        document.querySelector(".humidrange").innerHTML=data.main.humidity +"%";
+
+        document.querySelector(".windspeed").innerHTML=data.wind.speed +" km/hr";
+    }
+   // checkWheather();
+
+   searchBtn.addEventListener("click",()=>{
+    checkWheather(searchbox.value);
+   }
+   
+   )
+
+
+
+
+
+    // checkWheather().then(data=>{
+    //     console.log(data);
+    //     let cityName=document.querySelector(".cityName");
+    //     cityName.innerHTML=data.name;
+    //     let temp=document.querySelector(".temp"); 
+    //     temp.innerHTML=`${data.main.temp}°C`;
+    //     let desc=document.querySelector(".desc");
+    //     desc.innerHTML=data.weather[0].description;
+    //     let icon=document.querySelector(".icon");
+    //     icon.src=`http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    // });
+
+
+</script>
+
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    background-color:black;
+}
+body h1{
+    background: linear-gradient(to right);
+}
+.card{
+    width: 90%;
+    max-width: 470px;
+   padding: 40px 35px;
+   background: linear-gradient(100deg,#72fe00,#54548a);
+    margin: 50px auto 0;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    text-align: center;
+   
+}
+.search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search input{
+    border: 0;
+    background: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    height: 40px;
+    margin-right: 16px;
+    flex: 1;
+}
+#searchBtn{
+    outline: 0;
+    border: 0;
+    border-radius: 20%;
+   cursor: pointer;
+}
+.cloud img{
+    width: 200px;
+    padding-top: 30px;
+}
+.cloud{
+    padding: auto;
+    font-size: 30px;
+}
+.cityName {
+    font-size: 70px;
+}
+.temp{
+    font-size: 40px;
+    padding: 10px;
+}
+.cityName{
+    font-size: large;
+}
+.wind img{
+    width: 120px;
+    padding-top:0px;
+}
+.humid img{
+    width: 90px;
+    padding-top: 10px 0 0 0;
+    margin-left: 0px;
+}
+.humid{
+    margin-right: 40px;
+}
+.wind{
+    
+    margin-left: 90px;
+}
+.cloudData{
+    display: flex;
+    padding: 10px;
+}
